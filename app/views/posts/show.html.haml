@@ -1,0 +1,22 @@
+#post_show
+    %p.username
+        Shared by
+        = @post.user.username
+        about
+        = time_ago_in_words(@post.created_at)
+    .clearfix
+        .post_image_description
+            = image_tag @post.image.url(:medium)
+            .description= simple_format(@post.description)
+        .post_data 
+            - if @post.user == current_user
+                = link_to "Edit", edit_post_path(@post), class: "data"
+                = link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }
+#comments
+    %h2.comment_count= pluralize(@post.comments.count, "Comment")
+    - @comments.each do |comment|
+        .comment
+            %p.username= comment.user.username
+            %p.content= comment.content
+
+    = render "comments/form"

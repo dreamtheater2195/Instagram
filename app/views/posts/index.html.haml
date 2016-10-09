@@ -1,0 +1,10 @@
+#posts
+- @posts.each do |post|
+    %article.post
+        %header.post_header
+            = post.user.username
+            = time_ago_in_words(post.created_at)
+        .post_image
+            = link_to (image_tag post.image.url(:small)), post
+        .post_content
+            = post.description
