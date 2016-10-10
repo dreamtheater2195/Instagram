@@ -7,9 +7,26 @@ class CommentsController < ApplicationController
         @comment.post_id = @post.id
 
         if @comment.save
-            redirect_to post_path(@post)
+            respond_to do |format|
+                format.html { redirect_to :back }
+                format.js
+            end
         else
+            flash[:alert] = "Check the comment form, something went wrong."
             render 'new'
+        end
+    end
+
+    def destroy
+        @post = Post.find(params[:post_id])
+        @comment = @post.comments.find(params[:id])
+
+        if @comment.user_id == current_user.id
+            @comment.delete 
+            respond_to do |format|
+                format.html { redirect_to :back }
+                format.js
+            end
         end
     end
 end
