@@ -1,3 +1,23 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#posts {
+
+    .post {
+        border: 1px solid #9B9B9B;
+        .post_header {
+            .username {
+                float:left;
+            }
+            .post_time {
+                float:right;
+            }
+        }
+        .post_image {
+        
+        }
+        .post_content {
+
+        }
+    }
+}

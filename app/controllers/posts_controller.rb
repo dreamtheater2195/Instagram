@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :find_post, only: [:show, :edit, :destroy, :update, :like, :unlike]
+    before_action :find_post, only: [:show, :edit, :destroy, :update]
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
@@ -13,8 +13,10 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
         if @post.save
+            flash[:success] = "Your post has been created!"
             redirect_to @post 
         else 
+            flash.now[:alert] = "Your new post couldn't be created!  Please check the form."
             render 'new'
         end
     end 
@@ -28,8 +30,10 @@ class PostsController < ApplicationController
 
     def update
         if @post.update(post_params)
+            flash[:success] = "Post updated."
             redirect_to @post
         else
+            flash.now[:alert] = "Update failed.  Please check the form."
             render 'edit'
         end
     end
