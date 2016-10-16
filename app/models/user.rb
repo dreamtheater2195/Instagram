@@ -1,7 +1,9 @@
 class User < ApplicationRecord
     acts_as_voter
     
-    has_many :posts
+    validates :username, presence: true, length: { minimum: 4, maximum: 12 }
+
+    has_many :posts, dependent: :destroy
     has_many :comments, dependent: :destroy
     has_many :notifications, dependent: :destroy  
     # Include default devise modules. Others available are:

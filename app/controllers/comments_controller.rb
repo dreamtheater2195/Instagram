@@ -10,19 +10,18 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.create(comment_params)
+        @comment = @post.comments.build(comment_params)
         @comment.user_id = current_user.id
-        @comment.post_id = @post.id
 
         if @comment.save
             create_notification @post, @comment
             respond_to do |format|
-                format.html { redirect_to :back }
+                format.html { redirect_to root_path }
                 format.js
             end
         else
             flash[:alert] = "Check the comment form, something went wrong."
-            render 'new'
+            render root_path
         end
     end
 
@@ -30,9 +29,9 @@ class CommentsController < ApplicationController
         @comment = @post.comments.find(params[:id])
 
         if @comment.user_id == current_user.id
-            @comment.delete 
+            @comment.destroy 
             respond_to do |format|
-                format.html { redirect_to :back }
+                format.html { redirect_to root_path }
                 format.js
             end
         end
@@ -50,7 +49,7 @@ class CommentsController < ApplicationController
 
     def create_notification(post, comment) 
         return if post.user.id == current_user.id
-        Notification.create(user_id: post.user.id, notified_by: current_user.id, post_id: post.id, identifier: comment.id, notice_type: 'comment')
+        Notification.create(user_id: post.user.id, notified_by_id: current_user.id, post_id: post.id, identifier: comment.id, notice_type: 'comment')
     end
     
 end

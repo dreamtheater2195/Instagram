@@ -27,15 +27,6 @@ body {
   font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
-a {
-  color: #262626;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
 .alert {
   margin-bottom: 0px;
 }
@@ -93,11 +84,7 @@ a:hover {
       display: inline;
     }
     .user-name {
-      color: #191a1c;
-      font-weight: 600;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      font-weight: 500;
     }
     .time-ago {
       color: #A5A7AA;
@@ -118,11 +105,8 @@ a:hover {
     margin-bottom: 7px;
   }
   .user-name {
-    color: #191a1c;
-    font-weight: 600;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-weight: 500;
+    color: #125688;
     font-size: 15px;
   }
   .user-name, .caption-content {
@@ -153,7 +137,6 @@ a:hover {
   border: medium none;
   width: 100%;
   color: #4B4F54;
-  outline: none;
 }
 
 .comment-like-form {
@@ -168,11 +151,6 @@ a:hover {
   justify-content: center;
 }
 
-.comment {
-  .delete-comment {
-    color: #c7c7c7;
-  }
-}
 /* ## Wrapper and styling for the new, edit & devise views ## */
 
 .edit-links {
@@ -314,12 +292,12 @@ a:hover {
   text-decoration: none;
   color: red;
 }
-.like-button{
-  a:hover, a:focus {
-    text-decoration: none;
-    color: red;
-  }
+
+.like-button a:hover, a:focus {
+  text-decoration: none;
+  color: red;
 }
+
 // NOTIFICATIONS
 
 .notification-dropdown {
