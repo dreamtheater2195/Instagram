@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :find_post, only: [:show, :edit, :destroy, :update]
+    before_action :find_post, only: [:show, :edit, :destroy, :update, :like, :unlike]
     before_action :authenticate_user!, except: [:index, :show]
     before_action :owned_post, only: [:edit, :update, :destroy]
 
@@ -44,21 +44,23 @@ class PostsController < ApplicationController
         redirect_to root_path
     end
 
-    # def like
-    #     @post.liked_by current_user
-    #     respond_to do |format|
-    #         format.html { redirect_to :back }
-    #         format.js { render layout: false }
-    #     end
-    # end 
+    def like
+        if @post.liked_by current_user
+            respond_to do |format|
+                format.html { redirect_to :back}
+                format.js
+            end
+        end
+    end
 
-    # def unlike
-    #     @post.unliked_by current_user
-    #     respond_to do |format|
-    #         format.html { redirect_to :back }
-    #         format.js { render layout: false }
-    #     end
-    # end
+    def unlike
+        if @post.unliked_by current_user
+            respond_to do |format|
+                format.html { redirect_to :back}
+                format.js
+            end
+        end
+    end
 
     private 
         def find_post
