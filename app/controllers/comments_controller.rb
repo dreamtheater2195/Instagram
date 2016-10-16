@@ -1,6 +1,16 @@
 class CommentsController < ApplicationController
-    before_action :authenticate_user!
+
+    def index
+        @post = Post.find(params[:post_id])
+        @comments = @post.comments.order("created_at ASC")
+
+        respond_to do |format|
+            format.html {render layout: !request.xhr? }
+        end
+    end
+
     def create
+        
         @post = Post.find(params[:post_id])
         @comment = Comment.create(params[:comment].permit(:content))
         @comment.user_id = current_user.id
