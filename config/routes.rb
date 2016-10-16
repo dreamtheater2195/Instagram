@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'profiles/show'
+  get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
+  get 'notifications', to: 'notifications#index'
 
   root to: "posts#index" 
   resources :posts do
