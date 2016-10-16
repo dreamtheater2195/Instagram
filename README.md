@@ -23,3 +23,12 @@ Things you may want to cover:
 
 * ...
 # Instagram
+Instagram like site with these features:
+* Register, login user
+* CRUD Post
+* Create and destroy comments
+* User Profile
+* Notifications
+* Follow users
+* Like and unlike posts
+...
