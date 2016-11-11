@@ -10,6 +10,8 @@
     .collapse.navbar-collapse#bs-navbar-collapse-1
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
+          %li
+            = link_to "Dashboard", browse_posts_path
           %li 
             = render 'notifications/notification_dropdown'
           %li

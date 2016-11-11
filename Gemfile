@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -55,3 +55,5 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'kaminari', '~> 0.16.3'
 gem 'jquery-turbolinks'
+gem 'faker', '~> 1.6', '>= 1.6.3'
+gem 'populator', '~> 1.0'

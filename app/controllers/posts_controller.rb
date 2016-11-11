@@ -4,6 +4,13 @@ class PostsController < ApplicationController
     before_action :owned_post, only: [:edit, :update, :destroy]
 
     def index
+        @posts = Post.where("user_id IN (:following_ids) OR user_id = :user_id",
+                                                following_ids: current_user.following_ids, 
+                                                user_id: current_user.id)
+                                  .order("created_at DESC").page params[:page]
+    end
+
+    def browse
         @posts = Post.all.order("created_at DESC").page params[:page]
     end
 
