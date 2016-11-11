@@ -343,3 +343,21 @@ body {
     color: #2D6396;
   }
 }
+
+//user index 
+.users {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 40px;
+  li {
+    .button-follow {
+        margin-top: 55px;
+    }
+    .img-circle {
+      padding: 10px;
+      display: inline;
+    }
+    overflow: auto;
+    padding: 10px;
+  }
+}

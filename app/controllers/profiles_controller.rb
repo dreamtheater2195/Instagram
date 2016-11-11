@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_user 
   before_action :owned_profile, only: [:edit, :update]
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
 
   def show
